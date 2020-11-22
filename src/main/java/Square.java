@@ -1,4 +1,4 @@
-class Result{
+class Square {
     int maxSum;
     int leftBound;
     int rightBound;
