@@ -4,16 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-
-
-
-
-
-
     public static void main(String args[]) {
-
-
-
         try {
             //Read file
             String filePath = args[0];
@@ -31,18 +22,13 @@ public class Main {
                 }
             }
 
-
             MaxSum maxSum = new MaxSum(square);
             System.out.printf(String.valueOf(maxSum.getMaxSum()));
             myReader.close();
-
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
-
-
-
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MaxSum {
     private int[][] square;
     private int maxSum;
@@ -7,16 +9,15 @@ public class MaxSum {
         this.getResult(square);
     }
 
-
-    public int getMaxSum(){
+    public int getMaxSum() {
         return maxSum;
     }
 
-    private void setMaxSum(int maxSum){
+    private void setMaxSum(int maxSum) {
         this.maxSum = maxSum;
     }
 
-    public void getResult(int matrix[][]){
+    public void getResult(int matrix[][]) {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
@@ -26,17 +27,15 @@ public class MaxSum {
         Square square = new Square();
 
         for (int left = 0; left < cols; left++) {
-            for (int i = 0; i < rows; i++) {
-                temp[i]=0;
-                //we are instantiating temp to be fully zero
-            }
-            for(int right = left; right<cols; right++){
+            Arrays.fill(temp, 0);  //fill array with 0's
+            for (int right = left; right < cols; right++) {
+
                 for (int i = 0; i < rows; i++) {
                     temp[i] += matrix[i][right];
 
                 }
                 KadaneResult kadaneResult = getKadaneResult(temp);
-                if(kadaneResult.maxSum > square.maxSum){
+                if (kadaneResult.maxSum > square.maxSum) {
                     square.maxSum = kadaneResult.maxSum;
                     square.leftBound = left;
                     square.rightBound = right;
@@ -44,13 +43,12 @@ public class MaxSum {
                     square.lowBound = kadaneResult.end;
                 }
             }
-
         }
 
         setMaxSum(square.maxSum);
     }
 
-    public KadaneResult getKadaneResult(int array[]){
+    public KadaneResult getKadaneResult(int array[]) {
         //This function finds the max sum of the temp array
         int max = 0;
         int maxStart = -1;
@@ -62,17 +60,13 @@ public class MaxSum {
             //the max sum so far will equal to the current maxSum + the number at the index we're currently up to.
             maxSoFar += array[i];
             //if maxSoFar is a neg number
-            if(maxSoFar < 0){
+            if (maxSoFar < 0) {
                 maxSoFar = 0; //then just set it to 0
-                currentStart = i+1; //go to the next number in the array (i.e ignore the previous values)
+                currentStart = i + 1; //go to the next number in the array (i.e ignore the previous values)
 
             }
             //if the current max is less than the max we've been gathering (maxSoFar), swap it
-            if(max<maxSoFar){
-//                maxStart = currentStart;
-//                maxEnd = i;
-                max = maxSoFar;
-            }
+            max = Math.max(max, maxSoFar);
         }
         return new KadaneResult(max, maxStart, maxEnd);
     }
