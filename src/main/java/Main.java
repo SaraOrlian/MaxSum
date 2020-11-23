@@ -13,16 +13,16 @@ public class Main {
             //Get dimensions
             int size = myReader.nextInt();
             //Create empty array
-            int[][] square = new int[size][size];
+            int[][] matrix = new int[size][size];
             //Populate array
             for(int row = 0; row < size; row++){
                 for(int col = 0; col <size; col++){
                     int cell = myReader.nextInt();
-                    square[row][col] = cell;
+                    matrix[row][col] = cell;
                 }
             }
 
-            MaxSum maxSum = new MaxSum(square);
+            MaxSum maxSum = new MaxSum(matrix);
             System.out.printf(String.valueOf(maxSum.getMaxSum()));
             myReader.close();
 
