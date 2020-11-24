@@ -2,6 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/* Referenced:
+ *  https://youtu.be/-FgseNO-6Gk
+ *  https://www.youtube.com/watch?v=yCQN096CwWM
+ *  https://github.com/mission-peace/interview/blob/master/src/com/interview/dynamic/SubRectangularMatrixWithMaximumSum.java
+ */
+
 public class Main {
 
     public static void main(String args[]) {
